@@ -9,6 +9,7 @@ const { getAgeScore, getBpScore, getTempScore } = require('./utilities.js');
 
 // ---- Main Logic ----
 async function runAssessment() {
+  // --- Fetch all patients with retry fetch logic. ---
   console.log("Fetching all patient data...");
 
   let option = {
@@ -28,6 +29,8 @@ async function runAssessment() {
   }
 
   console.log(`Total patients fetched: ${allPatients.length}`);
+
+  // --- Analyze data / set score based on requirements ---
 
   const highRisk = [];
   const feverPatients = [];
@@ -55,6 +58,9 @@ async function runAssessment() {
   console.log(`High-risk patients: ${highRisk.length}`);
   console.log(`Fever patients: ${feverPatients.length}`);
   console.log(`Data quality issues: ${dataQualityIssues.length}`);
+
+
+  // --- Post submit alert ---
 
   const payload = {
     high_risk_patients: highRisk,
