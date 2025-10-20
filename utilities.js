@@ -18,14 +18,15 @@ function getBpScore(bpStr) {
 }
 
 function getTempScore(tempF) {
-  if (tempF == null) return null;
+  if (!tempF || isNaN(tempF)) return null;
+
   if (tempF >= 101) return 2;
   if (tempF >= 99.6) return 1;
   return 0;
 }
 
 function getAgeScore(age) {
-  if (age == null) return null;
+  if (!age || isNaN(age)) return null;
   if (age > 65) return 2;
   if (age >= 40) return 1;
   return 0;
