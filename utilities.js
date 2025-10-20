@@ -11,22 +11,23 @@ function getBpScore(bpStr) {
   if (!bp) return null;
 
   const { systolic, diastolic } = bp;
-  if (systolic >= 140 || diastolic >= 90) return 2;
-  if (systolic >= 130 || diastolic >= 85) return 1;
+  if (systolic >= 140 || diastolic >= 90) return 3;
+  if (systolic >= 130 || diastolic >= 80) return 2;
+  if (systolic >= 120 && diastolic < 80) return 1;
   return 0;
 }
 
 function getTempScore(tempF) {
   if (tempF == null) return null;
-  if (tempF > 101) return 2;
-  if (tempF > 99) return 1;
+  if (tempF >= 101) return 2;
+  if (tempF >= 99.6) return 1;
   return 0;
 }
 
 function getAgeScore(age) {
   if (age == null) return null;
-  if (age >= 65) return 2;
-  if (age >= 45) return 1;
+  if (age > 65) return 2;
+  if (age >= 40) return 1;
   return 0;
 }
 
